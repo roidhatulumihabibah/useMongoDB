@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
+	"go.mongodb.org/mongo-driver/bson"
 	"log"
 
 	"go.mongodb.org/mongo-driver/mongo"
@@ -25,7 +26,7 @@ func main() {
 
 	// Membaca data dari koleksi
 	collection := client.Database("dosen").Collection("person")
-	cur, err := collection.Find(context.Background(), nil)
+	cur, err := collection.Find(context.Background(), bson.D{{}})
 	if err != nil {
 		log.Fatal(err)
 	}
